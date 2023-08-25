@@ -180,7 +180,7 @@ func (s *GroupService) AddRBACRoleToGroup(ctx context.Context,
 	if isEmptyString(rbacRoleToGroupRequest.WorkspaceID) {
 		return fmt.Errorf("WorkspaceID cannot be nil to add Role to Group")
 	}
-	endpoint := fmt.Sprintf("/groups/%v/roles", groupId)
+	endpoint := fmt.Sprintf("/groups/%s/roles", *groupId)
 
 	req, err := s.client.NewRequest("POST", endpoint, nil, rbacRoleToGroupRequest)
 	if err != nil {
