@@ -56,6 +56,7 @@ type Client struct {
 	Targets                 AbstractTargetService
 	Workspaces              AbstractWorkspaceService
 	Groups									AbstractGroupService
+	FileResource						AbstractFileResourceService	
 	Admins                  AbstractAdminService
 	RBACUsers               AbstractRBACUserService
 	RBACRoles               AbstractRBACRoleService
@@ -153,6 +154,7 @@ func NewClient(baseURL *string, client *http.Client) (*Client, error) {
 	kong.Targets = (*TargetService)(&kong.common)
 	kong.Workspaces = (*WorkspaceService)(&kong.common)
 	kong.Groups = (*GroupService)(&kong.common)
+	kong.FileResource = (*FileResourceService) (&kong.common)
 	kong.Admins = (*AdminService)(&kong.common)
 	kong.RBACUsers = (*RBACUserService)(&kong.common)
 	kong.RBACRoles = (*RBACRoleService)(&kong.common)
