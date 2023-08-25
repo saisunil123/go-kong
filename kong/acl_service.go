@@ -10,7 +10,7 @@ type AbstractACLService interface {
 	// Create adds a consumer to an ACL group in Kong
 	Create(ctx context.Context, consumerUsernameOrID *string, aclGroup *ACLGroup) (*ACLGroup, error)
 	// Get fetches an ACL group for a consumer in Kong.
-	Get(ctx context.Context, consumerUsernameOrID, groupOrID *string) (*ACLGroup, error)
+	Get(ctx context.Context, consumerUsernameOrID *string, groupOrID *string) (*ACLGroup, error)
 	// Update updates an ACL group for a consumer in Kong
 	Update(ctx context.Context, consumerUsernameOrID *string, aclGroup *ACLGroup) (*ACLGroup, error)
 	// Delete deletes an ACL group association for a consumer in Kong
@@ -51,7 +51,7 @@ func (s *ACLService) Create(ctx context.Context,
 
 // Get fetches an ACL group for a consumer in Kong.
 func (s *ACLService) Get(ctx context.Context,
-	consumerUsernameOrID, groupOrID *string,
+	consumerUsernameOrID *string, groupOrID *string,
 ) (*ACLGroup, error) {
 	cred, err := s.client.credentials.Get(ctx, "acl",
 		consumerUsernameOrID, groupOrID)
