@@ -36,7 +36,7 @@ func TestRBACEndpointPermissionservice(T *testing.T) {
 	assert.NotNil(createdRole)
 
 	// Add Endpoint Permission to Role
-	origEp := &RBACEndpointPermission{
+	origEp := &RBACEndpointPermissionResponse{
 		Role: &RBACRole{
 			ID: createdRole.ID,
 		},
