@@ -149,7 +149,7 @@ func (s *FileResourceService) Delete(ctx context.Context,
 func (s *FileResourceService) List(ctx context.Context,
 	opt *ListOpt,
 ) ([]*FileResource, *ListOpt, error) {
-	data, next, err := s.client.list(ctx, "/filess", opt)
+	data, next, err := s.client.list(ctx, "/files", opt)
 	if err != nil {
 		return nil, nil, err
 	}
