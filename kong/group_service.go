@@ -41,6 +41,14 @@ type RBACRoleToGroupRequest struct {
 	RBACRoleID  *string `json:"rbac_role_id" yaml:"rbac_role_id"`
 }
 
+type FileResource struct {
+	CreatedAt *int    `json:"created_at,omitempty" yaml:"created_at,omitempty"`
+	ID        *string `json:"id,omitempty" yaml:"id,omitempty"`
+	Content   *string `json:"content,omitempty" yaml:"content,omitempty"`
+	Path   	  *string `json:"path,omitempty" yaml:"path,omitempty"`
+	Checksum  *string `json:"checksum,omitempty" yaml:"checksum,omitempty"`
+}
+
 // GroupService handles Groups in Kong.
 type GroupService service
 
