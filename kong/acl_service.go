@@ -15,6 +15,8 @@ type AbstractACLService interface {
 	Update(ctx context.Context, consumerUsernameOrID *string, aclGroup *ACLGroup) (*ACLGroup, error)
 	// Delete deletes an ACL group association for a consumer in Kong
 	Delete(ctx context.Context, consumerUsernameOrID, groupOrID *string) error
+	// Delete deletes a an ACL group association in Kong
+	DeleteById(ctx context.Context, aclGroupId *string) error
 	// List fetches a list of all ACL group and consumer associations in Kong.
 	List(ctx context.Context, opt *ListOpt) ([]*ACLGroup, *ListOpt, error)
 	// ListAll fetches all all ACL group associations in Kong.
