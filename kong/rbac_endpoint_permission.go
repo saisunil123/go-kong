@@ -14,7 +14,7 @@ type RBACEndpointPermission struct {
 	CreatedAt *int      `json:"created_at,omitempty" yaml:"created_at,omitempty"`
 	Workspace *string   `json:"workspace,omitempty" yaml:"workspace,omitempty"`
 	Endpoint  *string   `json:"endpoint,omitempty" yaml:"endpoint,omitempty"`
-	Actions   []*string `json:"actions,omitempty" yaml:"actions,omitempty"`
+	Actions   *string   `json:"actions,omitempty" yaml:"actions,omitempty"`
 	Negative  *bool     `json:"negative,omitempty" yaml:"negative,omitempty"`
 	Role      *RBACRole `json:"role,omitempty" yaml:"role,omitempty"`
 	Comment   *string   `json:"comment,omitempty" yaml:"comment,omitempty"`
@@ -31,15 +31,12 @@ func (e *RBACEndpointPermission) MarshalJSON() ([]byte, error) {
 		Role      *RBACRole `json:"role,omitempty" yaml:"role,omitempty"`
 		Comment   *string   `json:"comment,omitempty" yaml:"comment,omitempty"`
 	}
-	var actions []string
-	for _, action := range e.Actions {
-		actions = append(actions, *action)
-	}
+
 	return json.Marshal(&ep{
 		CreatedAt: e.CreatedAt,
 		Workspace: e.Workspace,
 		Endpoint:  e.Endpoint,
-		Actions:   String(strings.Join(actions, ",")),
+		Actions:   e.Actions,
 		Negative:  e.Negative,
 		Comment:   e.Comment,
 	})
