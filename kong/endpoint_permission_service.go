@@ -17,7 +17,7 @@ type RBACEndpointPermissionResponse struct {
 }
 
 // MarshalJSON marshals an endpoint permission into a suitable form for the Kong admin API
-func (e *Response) MarshalJSON() ([]byte, error) {
+func (e *RBACEndpointPermissionResponse) MarshalJSON() ([]byte, error) {
 	type ep struct {
 		CreatedAt *int      `json:"created_at,omitempty" yaml:"created_at,omitempty"`
 		Workspace *string   `json:"workspace,omitempty" yaml:"workspace,omitempty"`
