@@ -123,6 +123,22 @@ func (s *ACLService) List(ctx context.Context,
 	return aclGroups, next, nil
 }
 
+
+func (s *ACLService) DeleteById(ctx context.Context, aclGroupId *string) error {
+	if isEmptyString(aclGroupId) {
+		return fmt.Errorf("aclGroupId cannot be nil for Delete operation")
+	}
+
+	endpoint := fmt.Sprintf("/acls/%v", *aclGroupId)
+	req, err := s.client.NewRequest("DELETE", endpoint, nil, nil)
+	if err != nil {
+		return err
+	}
+
+	_, err = s.client.Do(ctx, req, nil)
+	return err
+}
+
 // ListAll fetches all all ACL group associations in Kong.
 // This method can take a while if there
 // a lot of ACLGroup associations are present.
