@@ -1743,14 +1743,8 @@ func (in *RBACEndpointPermission) DeepCopyInto(out *RBACEndpointPermission) {
 	}
 	if in.Actions != nil {
 		in, out := &in.Actions, &out.Actions
-		*out = make([]*string, len(*in))
-		for i := range *in {
-			if (*in)[i] != nil {
-				in, out := &(*in)[i], &(*out)[i]
-				*out = new(string)
-				**out = **in
-			}
-		}
+		*out = new(string)
+		**out = **in
 	}
 	if in.Negative != nil {
 		in, out := &in.Negative, &out.Negative
