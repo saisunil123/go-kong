@@ -3,7 +3,6 @@ package kong
 import (
 	"encoding/json"
 	"fmt"
-	"strings"
 )
 
 // RBACEndpointPermission represents an RBAC Endpoint Permission in Kong Enterprise
